@@ -37,17 +37,19 @@
             {#item = document.createElement('li');#}
             {#item.innerHTML = data;#}
             {#list.appendChild(item);#}
+            var time_now = new Date();
+            var time_now_f = time_now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
             var parsedData = JSON.parse(data);
             if (parsedData.fullDocument.BUY == true) {
                 document.getElementById(parsedData.fullDocument.Symbol).innerHTML = 'BUY';
                 document.getElementById(parsedData.fullDocument.Symbol + '-dir').classList.remove('triangle-down');
                 document.getElementById(parsedData.fullDocument.Symbol + '-dir').classList.add('triangle-up');
-                document.getElementById(parsedData.fullDocument.Symbol + '-time').innerHTML = '12:01';
+                document.getElementById(parsedData.fullDocument.Symbol + '-time').innerHTML = time_now_f;
             } else {
                 document.getElementById(parsedData.fullDocument.Symbol).innerHTML = 'SELL';
                 document.getElementById(parsedData.fullDocument.Symbol + '-dir').classList.remove('triangle-up');
                 document.getElementById(parsedData.fullDocument.Symbol + '-dir').classList.add('triangle-down');
-                document.getElementById(parsedData.fullDocument.Symbol + '-time').innerHTML = '12:01git';
+                document.getElementById(parsedData.fullDocument.Symbol + '-time').innerHTML = time_now_f;
             }
         });
     </script>
