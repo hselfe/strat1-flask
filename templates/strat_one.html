@@ -22,21 +22,10 @@
         var socket = io.connect();
 
         socket.on('connect', function () {
-            {#alert('I am connected to Mongo')#}
             socket.emit('listen_for_changes', 'Connected to live data');
-            {#alert('Connected to live data');#}
         });
 
-        {#function save() {#}
-        {#    socket.emit('listen_for_changes', 'Connected to live data');#}
-        {#    alert('Connected to live data');#}
-        {#}#}
-
         socket.on('update_data', function (data) {
-            {#list = document.getElementById("list");#}
-            {#item = document.createElement('li');#}
-            {#item.innerHTML = data;#}
-            {#list.appendChild(item);#}
             var time_now = new Date();
             var time_now_f = time_now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
             var parsedData = JSON.parse(data);
@@ -55,10 +44,6 @@
     </script>
 </head>
 <body>
-
-{#    <button onclick="save()">Connect to live data</button>#}
-{#    <ul id="list">#}
-{#    </ul>#}
 
     <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="/">DeepTrade UI</a>

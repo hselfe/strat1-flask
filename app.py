@@ -25,10 +25,7 @@ def listen_for_changes(data):
     with pymongo.cx['DeepTrade_v1'].stratOne.watch() as stream:
         for change in stream:
             print(json.dumps(change, default=json_util.default))
-            # this_time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-            # print(this_time)
-            #new_data = [nd.to_json() for nd in change['fullDocument']]
-            socketio.emit('update_data', json.dumps(change, default=json_util.default)) #change['fullDocument']['Symbol'])  #, latest_time = this_time)
+            socketio.emit('update_data', json.dumps(change, default=json_util.default))
 
 @app.route('/')
 def index():
