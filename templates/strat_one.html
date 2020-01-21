@@ -22,9 +22,9 @@
         var socket = io.connect();
 
         socket.on('connect', function () {
-            alert('I am connected to Mongo')
+            {#alert('I am connected to Mongo')#}
             socket.emit('listen_for_changes', 'Connected to live data');
-            alert('Connected to live data');
+            {#alert('Connected to live data');#}
         });
 
         {#function save() {#}
