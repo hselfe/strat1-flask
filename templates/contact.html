@@ -57,7 +57,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-
+            <a class="nav-item nav-link" href="/">Home</a>
+            <a class="nav-item nav-link active" href="contact">Contact</a>
         </div>
       </div>
     </nav>
@@ -65,25 +66,48 @@
     <p>&nbsp;</p>
     <div style="width: 80%; margin: 0 auto;">
 
-              <h2>Contact</h2>
+  <h2>Contact</h2>
 
-              <form action="{{ url_for('contact') }}" method=post>
-            {#    {{ form.hidden_tag() }}#}
+  {% if success %}
+    <p style="height: 500px;">Thank you for your message. We'll get back to you shortly.</p>
 
-                {{ form.name.label }}
-                {{ form.name }}
+  {% else %}
 
-                {{ form.email.label }}
-                {{ form.email }}
+    {% for message in form.name.errors %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
 
-                {{ form.subject.label }}
-                {{ form.subject }}
+    {% for message in form.email.errors %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
 
-                {{ form.message.label }}
-                {{ form.message }}
+    {% for message in form.subject.errors %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
 
-                {{ form.submit }}
-              </form>
+    {% for message in form.message.errors %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+    <form action="{{ url_for('contact') }}" method=post>
+{#      {{ form.hidden_tag() }}#}
+
+      {{ form.name.label }}
+      {{ form.name }}
+
+      {{ form.email.label }}
+      {{ form.email }}
+
+      {{ form.subject.label }}
+      {{ form.subject }}
+
+      {{ form.message.label }}
+      {{ form.message }}
+
+      {{ form.submit }}
+    </form>
+
+  {% endif %}
 
 
     </div>
