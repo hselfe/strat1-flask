@@ -30,14 +30,14 @@
             var time_now_f = time_now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
             var parsedData = JSON.parse(data);
             if (parsedData.fullDocument.BUY == true) {
-                document.getElementById(parsedData.fullDocument.Symbol).innerHTML = 'BUY';
+                document.getElementById(parsedData.fullDocument.Symbol).innerHTML = 'UP';
                 document.getElementById(parsedData.fullDocument.Symbol + '-dir').classList.remove('triangle-down');
                 document.getElementById(parsedData.fullDocument.Symbol + '-dir').classList.add('triangle-up');
                 if ((parsedData.fullDocument.signal_switch == true) || (document.getElementById(parsedData.fullDocument.Symbol + '-time').innerHTML == '__:__:__')) {
                     document.getElementById(parsedData.fullDocument.Symbol + '-time').innerHTML = time_now_f;
                 }
             } else if (parsedData.fullDocument.SELL == true) {
-                document.getElementById(parsedData.fullDocument.Symbol).innerHTML = 'SELL';
+                document.getElementById(parsedData.fullDocument.Symbol).innerHTML = 'DOWN';
                 document.getElementById(parsedData.fullDocument.Symbol + '-dir').classList.remove('triangle-up');
                 document.getElementById(parsedData.fullDocument.Symbol + '-dir').classList.add('triangle-down');
                 if ((parsedData.fullDocument.signal_switch == true) || (document.getElementById(parsedData.fullDocument.Symbol + '-time').innerHTML == '__:__:__')) {
@@ -57,7 +57,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link active" href="">Home</a>
-            <a class="nav-item nav-link" href="contact">Contact</a>
+            <a class="nav-item nav-link" target ="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdtSv84U9f8YYPAR1N-VzFP5nEG11-I1KGpfjzdWq5YL6_NJg/alreadyresponded">Contact</a>
         </div>
       </div>
     </nav>
